@@ -28,16 +28,16 @@ body {
     line-height: 1.5;
 }
 
+input {
+    font-size: inherit;
+    /* font-family: serif; */
+}
+
 /* layout */
 
 .page {
     display: flex;
     height: 100vh;
-}
-
-.page>main {
-    flex-grow: 1;
-    /* border: 1px solid green; */
 }
 
 /* aside */
@@ -97,5 +97,48 @@ body {
 /* main */
 
 .page>main {
-    padding: 20px
+    background-color: #d4d4d4;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.page>main>.form>h1 {
+    margin-left: 25px;
+    margin-bottom: 20px
+}
+
+.page>main>.form>.row label {
+    display: inline-block;
+    text-align: right;
+    width: 4em;
+}
+
+.page>main>.form>.row.actions {
+    margin-left: calc(4em + 5px)
+}
+
+.page>main>.form input[type=text] {
+    /* border: 1px solid red; */
+    padding: 3px 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    height: 30px;
+    margin: 10px 0;
+}
+
+.page>main>.form input[type=button],
+.page>main>.form input[type=submit],
+.page>main>.form button {
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px
+}
+
+.page>main>.form .row {
+    margin: 10px 0;
+    font-size: 14px;
 }
