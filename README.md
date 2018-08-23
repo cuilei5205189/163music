@@ -14,4 +14,6 @@ Playlist 歌单
 
 - qiniu
 http://jssdk-v2.demo.qiniu.io/
+
+https://github.com/qiniu/js-sdk/tree/1.x
 ⚠️版本用1.0版，package.json里的安装版本。
