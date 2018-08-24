@@ -58,18 +58,21 @@ input {
     background-color: #d4d4d4;
 }
 
-.page>aside>.songList {
+.page>aside #songList-container {
     flex-grow: 1;
+}
+
+.page>aside .songList {
     text-align: left;
     border-top: 1px solid #999;
 }
 
-.page>aside>.songList li {
+.page>aside .songList li {
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
 
-.page>aside>.songList li.active {
+.page>aside .songList li.active {
     background-color: #d4d4d4;
 }
 
@@ -103,7 +106,6 @@ input {
     justify-content: center;
     align-items: center;
 }
-
 
 .page>main>.form>h1 {
     margin-left: 25px;
