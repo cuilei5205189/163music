@@ -33,6 +33,7 @@
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+    <script src="./js/initializers/av.js"></script>
     <script src="../node_modules/plupload/js/moxie.min.js"></script>
     <script src="../node_modules/plupload/js/plupload.full.min.js"></script>
     <script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
@@ -43,30 +44,6 @@
     <script src="./js/new-song.js"></script>
     <script src="./js/song-list.js"></script>
     <script src="./js/upload-song.js"></script>
-    <script>
-        var APP_ID = 'FiFXzVPNTVOlwrPIS85JO5hh-gzGzoHsz';
-        var APP_KEY = 'mRUeyhQVHzOIt6au3tgwftFP';
-
-        AV.init({
-            appId: APP_ID,
-            appKey: APP_KEY
-        });
-        var {
-            Realtime,
-            TextMessage
-        } = AV;
-        // var TestObject = AV.Object.extend('Playlist');
-        // var testObject = new TestObject();
-        // testObject.save({
-        //     name: 'test',
-        //     cover: 'test',
-        //     creatorId: 'test',
-        //     description: 'test',
-        //     songs: [1, 2]
-        // }).then(function (object) {
-        //     alert('LeanCloud Rocks!');
-        // })
-    </script>
 </body>
 
 </html>
