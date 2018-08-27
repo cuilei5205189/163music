@@ -13,6 +13,9 @@ Song 所有歌曲
 Playlist 歌单
 
 - qiniu
+
+node server.js 8888，给qiniu提供uptoken
+
 http://jssdk-v2.demo.qiniu.io/
 
 https://github.com/qiniu/js-sdk/tree/1.x

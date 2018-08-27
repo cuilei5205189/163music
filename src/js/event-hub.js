@@ -4,17 +4,19 @@ window.eventHub = {
         // '半岛都市报': []
     },
     init() {},
-    emit(eventName, data) { //发布
+    emit(eventName, data) {
+        //发布
         for (let key in this.events) {
             if (key === eventName) {
                 let fnList = this.events[key]
-                fnList.map((fn) => {
+                fnList.map(fn => {
                     fn.call(undefined, data)
                 })
             }
         }
     },
-    on(eventName, fn) { //订阅
+    on(eventName, fn) {
+        //订阅
         if (this.events[eventName] === undefined) {
             this.events[eventName] = []
         }

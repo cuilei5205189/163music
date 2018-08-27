@@ -1,6 +1,6 @@
 {
     let view = {
-        el: '.page>main',
+        el: ".page>main",
         init() {
             this.$el = $(this.el)
         },
@@ -24,10 +24,10 @@
     </div>
 </form>`,
         render(data = {}) {
-            let placeholders = ['name', 'url', 'singer', 'id']
+            let placeholders = ["name", "url", "singer", "id"]
             let html = this.template
-            placeholders.map((string) => {
-                html = html.replace(`__${string}__`, data[string] || '')
+            placeholders.map(string => {
+                html = html.replace(`__${string}__`, data[string] || "")
             })
             $(this.el).html(html)
         }
@@ -35,38 +35,33 @@
 
     let model = {
         data: {
-            name: '',
-            singer: '',
-            url: '',
-            id: ''
+            name: "",
+            singer: "",
+            url: "",
+            id: ""
         },
         create(data) {
             // 声明类型
-            var Song = AV.Object.extend('Song')
+            var Song = AV.Object.extend("Song")
             // 新建对象
             var song = new Song()
             // 设置名称
-            song.set('name', data.name)
-            song.set('singer', data.singer)
-            song.set('url', data.url)
+            song.set("name", data.name)
+            song.set("singer", data.singer)
+            song.set("url", data.url)
             // 设置优先级
-            return song.save().then((newSong) => {
-                console.log('this', this)
-                let {
-                    id,
-                    attributes
-                } = newSong
-                console.log('there')
-
-                console.log('data', this.data)
-                Object.assign(this.data, {
-                    id,
-                    ...attributes
-                })
-
-            }, function (error) {
-                console.error(error)
-            })
+            return song.save().then(
+                newSong => {
+                    let { id, attributes } = newSong
+                    Object.assign(this.data, {
+                        id,
+                        ...attributes
+                    })
+                },
+                function(error) {
+                    console.error(error)
+                }
+            )
         }
     }
 
@@ -77,30 +72,23 @@
             this.view.init()
             this.view.render(this.model.data)
             this.bindEvents()
-            window.eventHub.on('upload', (data) => {
-                console.log('song form模块得到了 data')
-                console.log(data)
+            window.eventHub.on("upload", data => {
                 this.view.render(data)
             })
         },
         bindEvents() {
-            this.view.$el.on('submit', 'form', (e) => {
+            this.view.$el.on("submit", "form", e => {
                 e.preventDefault()
-                let needs = 'name singer url'.split(" ")
+                let needs = "name singer url".split(" ")
                 let data = {}
-                needs.map((string) => {
-                    data[string] = this.view.$el.find(`[name="${string}"]`).val()
+                needs.map(string => {
+                    data[string] = this.view.$el
+                        .find(`[name="${string}"]`)
+                        .val()
                 })
-                console.log(1)
-
-                this.model.create(data)
-                    .then(() => {
-                        this.view.render(this.model.data)
-                        console.log(this.model.data)
-                        console.log(10);
-
-                    })
-                console.log(this.model.create(data))
+                this.model.create(data).then(() => {
+                    this.view.render(this.model.data)
+                })
             })
         }
     }
