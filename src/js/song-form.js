@@ -23,7 +23,7 @@
         <input type="submit" value="保存">
     </div>
 </form>`,
-        render(data = {}) {
+        render(data) {
             let placeholders = ["name", "url", "singer", "id"]
             let html = this.template
             placeholders.map(string => {
@@ -53,10 +53,11 @@
             return song.save().then(
                 newSong => {
                     let { id, attributes } = newSong
-                    Object.assign(this.data, {
-                        id,
-                        ...attributes
-                    })
+                    this.data = { id, ...attributes }
+                    // Object.assign(this.data, {
+                    //     id,
+                    //     ...attributes
+                    // })
                 },
                 function(error) {
                     console.error(error)
@@ -73,7 +74,9 @@
             this.view.render(this.model.data)
             this.bindEvents()
             window.eventHub.on("upload", data => {
+                this.model.data = data
                 this.view.render(data)
+                console.log(data)
             })
         },
         bindEvents() {
@@ -88,6 +91,8 @@
                 })
                 this.model.create(data).then(() => {
                     this.view.render(this.model.data)
+                    window.eventHub.emit("create", this.model.data)
+                    console.log(this.model.data)
                 })
             })
         }

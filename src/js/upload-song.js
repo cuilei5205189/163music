@@ -81,8 +81,8 @@
                         var sourceLink =
                             domain + "/" + encodeURIComponent(res.key) // 获取上传成功后的文件的Url
                         window.eventHub.emit("upload", {
-                            link: sourceLink,
-                            key: res.key
+                            url: sourceLink,
+                            name: res.key
                         })
 
                         // window.app.newSong.active()
@@ -109,5 +109,5 @@
         }
     }
     controller.init(view, model)
-    window.app.uploadSong = controller
+    // window.app.uploadSong = controller
 }
